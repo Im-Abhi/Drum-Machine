@@ -1,0 +1,39 @@
+#root{
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background-color: rgb(224, 224, 209);
+  }
+  #drum-machine{
+    background-color: #595959;
+    padding: 30px;
+    border: 5px solid orange;
+  }
+  #display{
+    background-color: white;
+    color: black;
+    margin-top: 30px;
+    text-align:center;
+  }
+  .pads{
+    width: 400px;
+    padding:30px;
+  }
+  .pads button{
+    width:100px;
+    height: 80px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px black;
+  }
+  @media screen and (max-width:650px){
+    #drum-machine{
+      transform: scale(0.7);
+    }
+  }
+  .activeStyle{
+    background-color: orange;
+    border: none ;
+    box-shadow: none !IMPORTANT;
+  }

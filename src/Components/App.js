@@ -118,20 +118,27 @@ const bankTwo = [
 function App(){
   const [ bank, setBank ] = useState(bankOne);
   const [ curString, setCurString ] = useState("-");
+  function changeStyle(target){
+    target.classList.add('activeStyle');
+    setTimeout(()=>{
+      target.classList.remove('activeStyle');
+    },200);
+  }
   function playSound(key,id){
     const audio = document.getElementById(key);
+    changeStyle(audio.parentElement);
     setCurString(id);
     audio.currentTime = 0;
     audio.play();
   }
   return (
     <div id="drum-machine">
-      <h1 id="display">{curString}</h1>
-      {bank.map(source=>{
-        return(
-          <DrumPads source={source} play={playSound}/>
-        )
-      })}
+      <div className="pads">
+        {bank.map((source) => {
+          return <DrumPads source={source} play={playSound} />;
+        })}
+        <h1 id="display">{curString}</h1>
+      </div>
     </div>
   )
 }
