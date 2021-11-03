@@ -1,5 +1,6 @@
 import React ,{ useState } from "react";
 import DrumPads from "./DrumPads";
+import Controls from "./Controls";
 
 const bankOne = [
   {
@@ -116,20 +117,58 @@ const bankTwo = [
 ];
 
 function App(){
+  const [power, setPower] = useState(true);
   const [ bank, setBank ] = useState(bankOne);
   const [ curString, setCurString ] = useState("-");
-  function changeStyle(target){
-    target.classList.add('activeStyle');
-    setTimeout(()=>{
-      target.classList.remove('activeStyle');
-    },200);
+  const [ volume,setVolume ] = useState(13);
+  function changeStyle(target) {
+    if (!power) return;
+    target.classList.add("activeStyle");
+    setTimeout(() => {
+      target.classList.remove("activeStyle");
+    }, 200);
   }
-  function playSound(key,id){
+  function changeBank(e) {
+    if (!power) return;
+    const float = e.target.style.float;
+    if (float === "left") {
+      e.target.style.float = "right";
+      setBank(bankOne);
+      setCurString("Heater Kit");
+    } else {
+      e.target.style.float = "left";
+      setBank(bankTwo);
+      setCurString("Smooth Piano Kit");
+    }
+  }
+  function changeControls(e) {
+    const float = e.target.style.float;
+    if (float === "left") {
+      e.target.style.float = "right";
+    } else {
+      e.target.style.float = "left";
+      setCurString("-");
+    }
+    setPower(!power);
+  }
+  function playSound(key, id) {
+    if (!power) {
+      setCurString("-");
+      return;
+    }
     const audio = document.getElementById(key);
     changeStyle(audio.parentElement);
     setCurString(id);
     audio.currentTime = 0;
+    audio.volume = volume/100;
     audio.play();
+  }
+  function controlslider(e){
+    setVolume(e.target.value);
+    setCurString(`Volume: ${e.target.value}`);
+    setTimeout(()=>{
+      setCurString('-');
+    },1000);
   }
   return (
     <div id="drum-machine">
@@ -138,6 +177,19 @@ function App(){
           return <DrumPads source={source} play={playSound} />;
         })}
         <h1 id="display">{curString}</h1>
+        <Controls name="Power" changeControls={changeControls} />
+        <Controls name="Bank" changeControls={changeBank} />
+        <div className="slidecontainer">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={volume}
+            onChange={controlslider}
+            className="slide"
+            id="myRange"
+          />
+        </div>
       </div>
     </div>
   )
