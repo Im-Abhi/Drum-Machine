@@ -176,9 +176,10 @@ function App(){
         {bank.map((source) => {
           return <DrumPads source={source} play={playSound} />;
         })}
-        <h1 id="display">{curString}</h1>
+      </div>
+      <div className="controls-container">
         <Controls name="Power" changeControls={changeControls} />
-        <Controls name="Bank" changeControls={changeBank} />
+        <p id="display">{curString}</p>
         <div className="slidecontainer">
           <input
             type="range"
@@ -188,8 +189,9 @@ function App(){
             onChange={controlslider}
             className="slide"
             id="myRange"
-          />
+            />
         </div>
+        <Controls name="Bank" changeControls={changeBank} />
       </div>
     </div>
   )
