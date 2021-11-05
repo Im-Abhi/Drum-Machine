@@ -117,7 +117,7 @@ const bankTwo = [
 ];
 
 function App(){
-  const [power, setPower] = useState(true);
+  const [ power, setPower] = useState(true);
   const [ bank, setBank ] = useState(bankOne);
   const [ curString, setCurString ] = useState("-");
   const [ volume,setVolume ] = useState(13);
@@ -126,7 +126,7 @@ function App(){
     target.classList.add("activeStyle");
     setTimeout(() => {
       target.classList.remove("activeStyle");
-    }, 200);
+    }, 100);
   }
   function changeBank(e) {
     if (!power) return;
@@ -145,8 +145,10 @@ function App(){
     const float = e.target.style.float;
     if (float === "left") {
       e.target.style.float = "right";
+      e.target.style.backgroundColor = 'darkorange';
     } else {
       e.target.style.float = "left";
+      e.target.style.backgroundColor = 'black';
       setCurString("-");
     }
     setPower(!power);

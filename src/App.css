@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+*{
+  font-family: 'Merriweather', serif;
+}
 #root{
   height: 100vh;
   display:flex;
@@ -14,8 +18,10 @@
   border: 5px solid orange;
 }
 #display{
+  font-size: 1.25rem;
   width: 200px;
-  background-color: white;
+  background-color: darkgrey;
+  border-radius: 5px;
   padding: 10px;
   color: black;
   margin: 25px auto;
@@ -34,6 +40,7 @@
   box-shadow: 1px 1px 2px black;
 }
 .controls{
+  color: whitesmoke;
   width: 100px;
   margin: auto;
   height: 70px;
@@ -62,11 +69,13 @@
 .slider{
   width: 25px;
   height: 15px;
-  background-color: black;
+  background-color: darkorange;
   float: right;
   border-radius: 20px;
 }
 .slidecontainer{
+  height: 30px;
+  margin: 5px 0;
   width: 100%;
   text-align:center;
 }
@@ -74,9 +83,7 @@
   padding: 20px;
   text-align: center;
   width: 250px;
-  height: 270px;
   display: inline-block;
-  /* margin: auto; */
   vertical-align: top;
 }
 .slide {
