@@ -1,5 +1,6 @@
 # Drum-Machine
 A simple Drum-Machine made in REACTJS <br>
+![msedge_M80eYCeVDr](https://user-images.githubusercontent.com/86161191/140638809-5868709e-cb3d-4c9d-86c0-8cb865c916c0.png)
 
 ### About
 - It's like virtual drums where you can press the buttons on your keyboard or click them on the screen they will play a sound 
